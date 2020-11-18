@@ -1,13 +1,15 @@
 import React from "react";
 import Header from "./Header";
-import DayControl from "./DayControl";
+import MarketControl from "./MarketControl";
+import SeasonControl from "./SeasonControl";
 
 function App(){
   
   return (
     <React.Fragment>
       <Header />
-      <DayControl />
+      <MarketControl />
+      <SeasonControl />
     </React.Fragment>
   );
 }

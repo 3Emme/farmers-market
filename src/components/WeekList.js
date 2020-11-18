@@ -1,6 +1,6 @@
 import React from "react";
 import Day from "./Day";
-
+import PropTypes from "prop-types";
 
 const marketSchedule = [
   {
@@ -34,6 +34,12 @@ const marketSchedule = [
     booth: "6D"
   },
   {
+    day: "Friday",
+    location: "Belmont",
+    hours: "10:00pm - 1:30am",
+    booth: "3E"
+  },
+  {
     day: "Saturday",
     location: "Beaverton",
     hours: "10:00am - 1:30pm",
@@ -41,7 +47,26 @@ const marketSchedule = [
   }
 ];
 
-function WeekList() {
+function WeekList(props) {
+  return (
+    <React.Fragment>
+      <hr />
+      {/* {props.currentVisibleDay} */}
+      <Day day={marketSchedule[props.currentIndex].day}
+        location={marketSchedule[props.currentIndex].location}
+        hours={marketSchedule[props.currentIndex].hours}
+        booth={marketSchedule[props.currentIndex].booth}
+      />
+
+    </React.Fragment>
+  );
+}
+
+marketSchedule.propTypes = {
+  currentIndex: PropTypes.number
+}
+
+function FullWeekList() {
   return (
     <React.Fragment>
       <hr />
@@ -49,9 +74,27 @@ function WeekList() {
         <Day day={day.day}
           location={day.location}
           hours={day.hours}
+          booth={day.booth}
           key={index} />
       )}
     </React.Fragment>
   );
 }
-export default WeekList;
+
+export { WeekList, FullWeekList };
+
+// function MonthList(props) {   
+//   return (
+//      <React.Fragment>
+//         <hr />        
+//         <Month 
+//            month={availableProduce[props.currentIndex].month}
+//            selection={availableProduce[props.currentIndex].selection}
+//            />         
+//      </React.Fragment>
+//   );
+// }
+
+// MonthList.propTypes = {
+//   currentIndex: PropTypes.number   
+// }
